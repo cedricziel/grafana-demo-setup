@@ -1,3 +1,4 @@
+namespace: otel-demo-appo11y-cedric
 secretGenerator:
 - name: grafana-agent-secrets
   envs:
