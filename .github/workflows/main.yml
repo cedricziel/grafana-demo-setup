@@ -37,6 +37,7 @@ jobs:
               --install \
               --wait \
               --atomic \
+              --timeout 10m0s \
               --namespace=otel-demo-appo11y-cedric \
               --create-namespace \
               --values=./otel-demo-appo11y/values.yml
