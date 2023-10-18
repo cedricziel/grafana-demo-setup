@@ -39,6 +39,7 @@ jobs:
           GRAFANA_CLOUD_TEMPO_USERNAME: ${{ secrets.GRAFANA_CLOUD_TEMPO_USERNAME }}
           GRAFANA_CLOUD_LOKI_USERNAME: ${{ secrets.GRAFANA_CLOUD_LOKI_USERNAME }}
           GRAFANA_CLOUD_API_KEY: ${{ secrets.GRAFANA_CLOUD_API_KEY }}
+        working-directory: ./otel-demo-appo11y/
         run: |
           touch .env.secret
           echo GRAFANA_CLOUD_PROMETHEUS_URL="$GRAFANA_CLOUD_PROMETHEUS_URL" >> .env.secret
