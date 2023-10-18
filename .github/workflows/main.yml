@@ -65,6 +65,7 @@ jobs:
               --namespace=otel-demo-appo11y-cedric \
               --create-namespace \
               --set-file agent.configMap.content=./otel-demo-appo11y/agent.river \
+              --set agent.envFrom[0].secretRef[name]=grafana-agent-secrets \
               --values=./otel-demo-appo11y/agent-values.yml
 
       - name: Deploy OpenTelemetry Demo
