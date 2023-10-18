@@ -52,8 +52,7 @@ jobs:
       - name: Add agent secrets
         uses: steebchen/kubectl@v2.0.0
         with:
-          command: apply -k ./otel-demo-appo11y/
-          config: ${{ steps.gke-credentials.outputs.kubeconfig_path }}
+          command: apply --kubeconfig=${{ steps.gke-credentials.outputs.kubeconfig_path }} -k ./otel-demo-appo11y/
 
       - name: Deploy Grafana Agent
         uses: WyriHaximus/github-action-helm3@v3
