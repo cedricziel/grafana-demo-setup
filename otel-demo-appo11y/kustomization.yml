@@ -2,4 +2,6 @@ namespace: otel-demo-appo11y-cedric
 secretGenerator:
 - name: grafana-agent-secrets
   envs:
-  - .env.secret
+    - .env.secret
+  options:
+    disableNameSuffixHash: true
