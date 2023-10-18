@@ -18,7 +18,7 @@ jobs:
       - uses: simenandre/setup-gke-gcloud-auth-plugin@v1
 
       - uses: google-github-actions/get-gke-credentials@v1
-        id: gke-credentials
+        id: gke_credentials
         with:
           cluster_name: ${{ secrets.GKE_CLUSTER_NAME }}
           location: ${{ secrets.GKE_CLUSTER_REGION }}
@@ -52,7 +52,7 @@ jobs:
       - name: Add agent secrets
         uses: steebchen/kubectl@v2.0.0
         with:
-          command: apply --kubeconfig=${{ steps.gke-credentials.outputs.kubeconfig_path }} -k ./otel-demo-appo11y/
+          command: apply --kubeconfig ${{ steps.gke_credentials.outputs.kubeconfig_path }} -k ./otel-demo-appo11y/
 
       - name: Deploy Grafana Agent
         uses: WyriHaximus/github-action-helm3@v3
