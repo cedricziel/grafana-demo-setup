@@ -32,4 +32,11 @@ jobs:
       - name: Deploy
         uses: WyriHaximus/github-action-helm3@v3
         with:
-          exec: helm upgrade otel-demo-appo11y-cedric open-telemetry/opentelemetry-demo --install --wait --atomic --namespace=otel-demo-appo11y-cedric --values=./otel-demo-appo11y/values.yml
+          exec: |
+            helm upgrade otel-demo-appo11y-cedric open-telemetry/opentelemetry-demo \
+              --install \
+              --wait \
+              --atomic \
+              --namespace=otel-demo-appo11y-cedric \
+              --create-namespace \
+              --values=./otel-demo-appo11y/values.yml
