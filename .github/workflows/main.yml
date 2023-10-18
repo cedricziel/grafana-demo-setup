@@ -48,9 +48,10 @@ jobs:
           echo GRAFANA_CLOUD_LOKI_USERNAME="$GRAFANA_CLOUD_LOKI_USERNAME" >> .env.secret
           echo GRAFANA_CLOUD_API_KEY="$GRAFANA_CLOUD_API_KEY" >> .env.secret
       
-      - uses: actions-hub/kubectl@master
+      - name: Add agent secrets
+        uses: WyriHaximus/github-action-helm3@v3
         with:
-          args: apply -k ./otel-demo-appo11y/
+          exec: kubectl apply -k ./otel-demo-appo11y/
 
       - name: Deploy Grafana Agent
         uses: WyriHaximus/github-action-helm3@v3
@@ -65,7 +66,6 @@ jobs:
               --namespace=otel-demo-appo11y-cedric \
               --create-namespace \
               --set-file agent.configMap.content=./otel-demo-appo11y/agent.river \
-              --set agent.envFrom[0].secretRef[name]=grafana-agent-secrets \
               --values=./otel-demo-appo11y/agent-values.yml
 
       - name: Deploy OpenTelemetry Demo
