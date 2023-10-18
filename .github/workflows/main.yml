@@ -28,6 +28,29 @@ jobs:
           exec: |
             helm repo add grafana https://grafana.github.io/helm-charts
             helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
+      
+      - name: Write Secrets
+        env:
+          GRAFANA_CLOUD_PROMETHEUS_URL: ${{ secrets.GRAFANA_CLOUD_PROMETHEUS_URL }}
+          GRAFANA_CLOUD_LOKI_URL: ${{ secrets.GRAFANA_CLOUD_LOKI_URL }}
+          GRAFANA_CLOUD_TEMPO_ENDPOINT: ${{ secrets.GRAFANA_CLOUD_TEMPO_ENDPOINT }}
+          GRAFANA_CLOUD_PROMETHEUS_USERNAME: ${{ secrets.GRAFANA_CLOUD_PROMETHEUS_USERNAME }}
+          GRAFANA_CLOUD_TEMPO_USERNAME: ${{ secrets.GRAFANA_CLOUD_TEMPO_USERNAME }}
+          GRAFANA_CLOUD_LOKI_USERNAME: ${{ secrets.GRAFANA_CLOUD_LOKI_USERNAME }}
+          GRAFANA_CLOUD_API_KEY: ${{ secrets.GRAFANA_CLOUD_API_KEY }}
+        run: |
+          touch .env.secret
+          echo GRAFANA_CLOUD_PROMETHEUS_URL="$GRAFANA_CLOUD_PROMETHEUS_URL" >> .env.secret
+          echo GRAFANA_CLOUD_LOKI_URL="$GRAFANA_CLOUD_LOKI_URL" >> .env.secret
+          echo GRAFANA_CLOUD_TEMPO_ENDPOINT="$GRAFANA_CLOUD_TEMPO_ENDPOINT" >> .env.secret
+          echo GRAFANA_CLOUD_PROMETHEUS_USERNAME="$GRAFANA_CLOUD_PROMETHEUS_USERNAME" >> .env.secret
+          echo GRAFANA_CLOUD_TEMPO_USERNAME="$GRAFANA_CLOUD_TEMPO_USERNAME" >> .env.secret
+          echo GRAFANA_CLOUD_LOKI_USERNAME="$GRAFANA_CLOUD_LOKI_USERNAME" >> .env.secret
+          echo GRAFANA_CLOUD_API_KEY="$GRAFANA_CLOUD_API_KEY" >> .env.secret
+      
+      - uses: actions-hub/kubectl@master
+        with:
+          args: apply -k ./otel-demo-appo11y/
 
       - name: Deploy Grafana Agent
         uses: WyriHaximus/github-action-helm3@v3

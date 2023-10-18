@@ -1,0 +1,4 @@
+secretGenerator:
+- name: grafana-agent-secrets
+  envs:
+  - .env.secret
