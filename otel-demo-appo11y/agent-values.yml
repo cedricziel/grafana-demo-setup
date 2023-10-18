@@ -1,6 +1,6 @@
 agent:
   envFrom:
     - secretRef:
-        name: grafanacloud-credentials
+        name: grafana-agent-secrets
 controller:
   type: deployment
