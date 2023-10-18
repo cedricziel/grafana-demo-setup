@@ -50,11 +50,7 @@ jobs:
           echo GRAFANA_CLOUD_API_KEY="$GRAFANA_CLOUD_API_KEY" >> .env.secret
       
       - name: Add agent secrets
-        uses: steebchen/kubectl@v2.0.0
-        with:
-          command: apply -k ./otel-demo-appo11y/
-        env:
-          KUBECONFIG: ${{ steps.gke_credentials.outputs.kubeconfig_path }}
+        run: kubectl apply -k ./otel-demo-appo11y/
 
       - name: Deploy Grafana Agent
         uses: WyriHaximus/github-action-helm3@v3
