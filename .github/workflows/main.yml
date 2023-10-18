@@ -29,7 +29,20 @@ jobs:
             helm repo add grafana https://grafana.github.io/helm-charts
             helm repo add open-telemetry https://open-telemetry.github.io/opentelemetry-helm-charts
 
-      - name: Deploy
+      - name: Deploy OpenTelemetry Demo
+        uses: WyriHaximus/github-action-helm3@v3
+        with:
+          exec: |
+            helm upgrade grafana-agent-appo11y-cedric grafana/grafana-agent \
+              --install \
+              --wait \
+              --atomic \
+              --timeout 10m0s \
+              --namespace=otel-demo-appo11y-cedric \
+              --create-namespace \
+              --values=./otel-demo-appo11y/agent-values.yml
+
+      - name: Deploy OpenTelemetry Demo
         uses: WyriHaximus/github-action-helm3@v3
         with:
           exec: |
