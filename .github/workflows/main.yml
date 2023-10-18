@@ -35,6 +35,7 @@ jobs:
           exec: |
             helm upgrade grafana-agent-appo11y-cedric grafana/grafana-agent \
               --install \
+              --force \
               --wait \
               --atomic \
               --timeout 10m0s \
@@ -49,6 +50,7 @@ jobs:
           exec: |
             helm upgrade otel-demo-appo11y-cedric open-telemetry/opentelemetry-demo \
               --install \
+              --force \
               --wait \
               --atomic \
               --timeout 10m0s \
