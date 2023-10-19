@@ -3,7 +3,13 @@ agent:
     - secretRef:
         name: grafana-agent-secrets
   extraPorts:
-    - 4317
-    - 4318
+    - name: "OTLP 4317"
+      port: 4317
+      targetPort: 4317
+      protocol: "TCP"
+    - name: "OTLP 4318"
+      port: 4318
+      targetPort: 4318
+      protocol: "TCP"
 controller:
   type: deployment
