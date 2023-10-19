@@ -2,5 +2,8 @@ agent:
   envFrom:
     - secretRef:
         name: grafana-agent-secrets
+  extraPorts:
+    - 4317
+    - 4318
 controller:
   type: deployment
