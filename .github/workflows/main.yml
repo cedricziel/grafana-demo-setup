@@ -42,12 +42,12 @@ jobs:
         working-directory: ./otel-demo-appo11y/
         run: |
           touch .env.secret
-          echo -n GRAFANA_CLOUD_PROMETHEUS_URL="$GRAFANA_CLOUD_PROMETHEUS_URL" >> .env.secret
-          echo -n GRAFANA_CLOUD_LOKI_URL="$GRAFANA_CLOUD_LOKI_URL" >> .env.secret
-          echo -n GRAFANA_CLOUD_TEMPO_ENDPOINT="$GRAFANA_CLOUD_TEMPO_ENDPOINT" >> .env.secret
-          echo -n GRAFANA_CLOUD_PROMETHEUS_USERNAME="$GRAFANA_CLOUD_PROMETHEUS_USERNAME" >> .env.secret
-          echo -n GRAFANA_CLOUD_TEMPO_USERNAME="$GRAFANA_CLOUD_TEMPO_USERNAME" >> .env.secret
-          echo -n GRAFANA_CLOUD_LOKI_USERNAME="$GRAFANA_CLOUD_LOKI_USERNAME" >> .env.secret
+          echo GRAFANA_CLOUD_PROMETHEUS_URL="$GRAFANA_CLOUD_PROMETHEUS_URL" >> .env.secret
+          echo GRAFANA_CLOUD_LOKI_URL="$GRAFANA_CLOUD_LOKI_URL" >> .env.secret
+          echo GRAFANA_CLOUD_TEMPO_ENDPOINT="$GRAFANA_CLOUD_TEMPO_ENDPOINT" >> .env.secret
+          echo GRAFANA_CLOUD_PROMETHEUS_USERNAME="$GRAFANA_CLOUD_PROMETHEUS_USERNAME" >> .env.secret
+          echo GRAFANA_CLOUD_TEMPO_USERNAME="$GRAFANA_CLOUD_TEMPO_USERNAME" >> .env.secret
+          echo GRAFANA_CLOUD_LOKI_USERNAME="$GRAFANA_CLOUD_LOKI_USERNAME" >> .env.secret
           echo -n GRAFANA_CLOUD_API_KEY="$GRAFANA_CLOUD_API_KEY" >> .env.secret
       
       - name: Add agent secrets
