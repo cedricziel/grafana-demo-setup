@@ -3,7 +3,7 @@ default:
     - name: OTEL_COLLECTOR_NAME
       value: grafana-agent-appo11y-cedric
     - name: OTEL_RESOURCE_ATTRIBUTES
-      value: service.name=$(OTEL_SERVICE_NAME),service.namespace=otel-demo-appo11y-cedric
+      value: service.name=$(OTEL_SERVICE_NAME),service.namespace=otel-demo-appo11y-cedric,deployment.environment=prod
 
 opentelemetry-collector:
   enabled: false
