@@ -2,6 +2,10 @@ name: Scale Down
 on:
   workflow_dispatch:
 
+concurrency:
+  group: interact-cluster
+  cancel-in-progress: false
+
 jobs:
   deployment:
     runs-on: 'ubuntu-latest'
