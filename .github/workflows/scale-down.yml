@@ -67,5 +67,5 @@ jobs:
               --timeout 10m0s \
               --namespace=otel-demo-appo11y-cedric \
               --create-namespace \
-              --value=replicaCount=0
+              --set replicaCount=0 \
               --values=./otel-demo-appo11y/values.yml
